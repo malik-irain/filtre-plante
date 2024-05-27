@@ -1,0 +1,4 @@
+Dans ce dépot, vous trouverez 3 "projets" liés à la gestion du filtre planté du projet [BioROC](https://woc.edu.umontpellier.fr/organisation-des-projets-defi-cle-water-occitanie/projets-structurants-defi-cle-water-occitanie/bioroc/) :
+* `node-red-automationhat-docker` : un container docker qui crée une instance [Node-RED](https://nodered.org/) avec le driver du [PIMORONI Automation Hat](https://shop.pimoroni.com/products/automation-hat?variant=30712316554).
+* `sane-flask-api` : un container docker avec une API Flask qui permet de gérer les scanners du filtre planté, avec 3 points d'accès permettant de les lister, trouver leurs identifiants ou de lancer un scan.
+* `gridfs-flask-api` : un container docker avec une ébauche API Flask qui permet l'insertion de données "volumineuses" (les images issues du scan) dans une base [MongoDB](https://www.mongodb.com) à l'aide de la spécification [GridFS](https://www.mongodb.com/docs/manual/core/gridfs/).

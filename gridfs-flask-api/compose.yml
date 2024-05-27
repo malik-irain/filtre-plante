@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+
+  gridfs-flask-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: neocampus/gridfs-flask-api:1.0
+    restart: unless-stopped
+    container_name: gridfs-flask-api
+    privileged: true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    network_mode: bridge
+    ports:
+      - "61210:61210"
+    environment:
+      - TZ=Europe/Paris
+    env_file:
+      - mongo_config.env

@@ -1,0 +1,35 @@
+# François was here ;)
+#
+version: '3'
+
+volumes:
+
+  # volume mapped to a local directory
+  node-red-data:
+    name: "node-red-data" # if you do not want your volume name prepended by the COMPOSE_PROJECT_NAME (i.e current directory)
+    driver: local
+    driver_opts:
+      type: none
+      device: ${NODE_RED_DATA:-/opt/node-red-data}
+      o: bind
+
+
+services:
+
+  node-red:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: neocampus/node-red:3.1-debian-automationhat
+    restart: unless-stopped
+    container_name: nodered
+    privileged: true
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - node-red-data:/data
+    network_mode: bridge
+    ports:
+      - "1880:1880"
+    environment:
+      - TZ=Europe/Paris
+
